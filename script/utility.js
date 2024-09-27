@@ -17,7 +17,7 @@ function getARandomAlphabet (){
    
     
 
-    const randomNumber = Math.random()*25
+    const randomNumber = Math.random() * 25;
     const index =Math.round(randomNumber)
     
     const alphabet =alphabets[index];
