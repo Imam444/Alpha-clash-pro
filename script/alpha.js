@@ -31,8 +31,8 @@ function handleKeyboardKeyUpEvent(event){
         const currentLife = parseInt(currentLifeText)
         console.log('you missed. you lost a life')
 
-        const newLife = currentLife -1;
-        currentLifeElement.innerText= newLife
+        const newLife = currentLife - 1;
+        currentLifeElement.innerText= newLife;
         
     }
 }
