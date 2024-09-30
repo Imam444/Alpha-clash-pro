@@ -9,7 +9,6 @@ function handleKeyboardKeyUpEvent(event){
 
     if(playerPress === expectedAlphabet){
         console.log('you get a point')
-        console.log('you have pressed currently',expectedAlphabet)
         // update score
         const currentScoreElement = document.getElementById('current-score')
         const currentScoreText = currentScoreElement.innerText;
@@ -34,6 +33,9 @@ function handleKeyboardKeyUpEvent(event){
         const newLife = currentLife - 1;
         currentLifeElement.innerText= newLife;
         
+        if( newLife === 0){
+         gameOver();
+        }
     }
 }
 document.addEventListener('keyup', handleKeyboardKeyUpEvent)
@@ -46,13 +48,23 @@ function continueGame (){
     const currentAlphabetElement =document.getElementById('current-alphabet')
     currentAlphabetElement.innerText =alphabet;
 
-    setBackgroundColorByID(alphabet);
+    setBackgroundColorById(alphabet);
 
 }
 
 function play(){
-   hideElementById('home')
-   showElementById('play-ground')
-   continueGame()
+   hideElementById('home');
+   hideElementById('final-score');
+   showElementById('play-ground');
+
+ // reset score and life
+ setTextElementValueById( 'current-life',5);
+ setTextElementValueById('current-score')
+
+   continueGame();
 }
 
+function gameOver(){
+    hideElementById('play-ground');
+    showElementById('final-score')
+}
