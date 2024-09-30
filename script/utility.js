@@ -10,12 +10,26 @@ function showElementById (elementId){
     element.classList.remove('hidden')
 
 }
+function getTexElementValueById(elementId){
+    const element =document.getElementById(elementId)
+    const elementValueText = element.innerText;
+    const value =parseInt(elementValueText)
+    return value;
+}
+
 
 function setTextElementValueById(elementId, value){
     const element =document.getElementById(elementId)
     element.innerText = value;
     return value;
  
+}
+
+function getElementTextById(elementId){
+    const element =document.getElementById(elementId)
+    const text =element.innerText
+    return text;
+
 }
 
 function setBackgroundColorById(elementId){

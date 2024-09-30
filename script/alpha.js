@@ -1,6 +1,10 @@
 function handleKeyboardKeyUpEvent(event){
     const playerPress = event.key;
     console.log('player Press', playerPress)
+    // stop the games if player press esc
+    if(playerPress === 'Escape'){
+        gameOver();
+    }
 
     const currentAlphabetElement =document.getElementById('current-alphabet');
     const currentAlphabet =currentAlphabetElement.innerText
@@ -28,7 +32,7 @@ function handleKeyboardKeyUpEvent(event){
         const currentLifeElement =document.getElementById('current-life')
         const currentLifeText = currentLifeElement.innerText;
         const currentLife = parseInt(currentLifeText)
-        console.log('you missed. you lost a life')
+        // console.log('you missed. you lost a life')
 
         const newLife = currentLife - 1;
         currentLifeElement.innerText= newLife;
@@ -59,12 +63,19 @@ function play(){
 
  // reset score and life
  setTextElementValueById( 'current-life',5);
- setTextElementValueById('current-score')
+ setTextElementValueById('current-score',0),
 
    continueGame();
 }
 
 function gameOver(){
     hideElementById('play-ground');
-    showElementById('final-score')
+    showElementById('final-score');
+    const  lastScore = getTexElementValueById('current-score')
+    console.log(lastScore);
+    setTextElementValueById('last-score',lastScore)
+    
+    const currentAlphabet =getElementTextById('current-alphabet')
+    // console.log(currentAlphabet)
+    removeBackgroundById(currentAlphabet);
 }
